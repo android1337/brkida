@@ -10,6 +10,16 @@ Currently only supports MSVC and x64
  - The stub is generated at compile-time by using a random ptr formed by 4 random bytes, each based on an hash that's based on the date, time and a counter which increases every time a function is protected.
  - Supports C++14 and higher versions.
 
+## What it actually does
+This project exploits the fact that IDA decompiler fails when it encounters a stack access on a pointer that's too big.\
+ASM:
+```asm
+jmp useless ; jump 8 byte after to skip the next instruction (E8 08)
+mov [rsp + BIGINT_HERE], rcx ; this will never be executed or we would crash too (48 89 8C 24 DE AD BE EF)
+useless:
+ret ; C3
+```
+
 ## How it shows
 ![IDA Decompilation Failure](https://i.imgur.com/ctg9Zxv.png)\
 
