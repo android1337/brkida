@@ -4,7 +4,7 @@
 This repository provides a one-header project that can easily prevent IDA decompiler tool to decompile the functions of any program by throwing a decompilation failure.\
 Users can easily protect their functions using the `BRKIDA` macro provided in the header.\
 The repository includes an example demonstrating the usage of `BRKIDA`.\
-Currently only supports MSVC and x64
+Currently only supports MSVC and x64.
 
 ## Key Aspects
  - The stub is generated at compile-time by using a random ptr formed by 4 random bytes, each based on an hash that's based on the date, time and a counter which increases every time a function is protected.
